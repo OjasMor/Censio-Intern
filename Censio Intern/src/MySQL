@@ -1,0 +1,14 @@
+Query to return all posts posted in the last 24 hours
+	mysql> SELECT * FROM posts WHERE date_posted >= CURDATE()- INTERVAL 1 DAY;
+	
+Query that returns all posts grouped by topic
+	mysql> SELECT * FROM posts GROUP BY topic;
+	or
+	mysql> SELECT * FROM posts order by topic;
+
+Query to return all anonymous posts posted in the last week, sorted by most recent to least recent
+	mysql> SELECT * FROM posts WHERE (date_posted BETWEEN date_sub(NOW(), INTERVAL 1 WEEK) AND NOW()) AND (is_anonymous) ORDER BY time_posted DESC;
+	
+Query to return all posts that have the word "Love" in the title
+	mysql> SELECT * FROM posts WHERE title LIKE '%Love%';
+	
